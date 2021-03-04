@@ -95,7 +95,7 @@ class ReinforcementAgent(ValueEstimationAgent):
                       observeTransition(state,action,nextState,deltaReward),
                       which will call update(state, action, nextState, deltaReward)
                       which you should override.
-        - Use self.getLegalActions(state) to know which actions
+                    - Use self.getLegalActions(state) to know which actions
                       are available in a state
     """
     ####################################
