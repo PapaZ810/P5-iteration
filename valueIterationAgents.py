@@ -60,7 +60,7 @@ class ValueIterationAgent(ValueEstimationAgent):
           value function stored in self.values.
         """
         "*** YOUR CODE HERE ***"
-        pass
+        self.mdp.getReward(state, action, action+state)
 
     def computeActionFromValues(self, state):
         """
