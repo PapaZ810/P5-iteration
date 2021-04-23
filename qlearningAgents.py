@@ -112,8 +112,6 @@ class QLearningAgent(ReinforcementAgent):
         "*** YOUR CODE HERE ***"
         currentQValue = self.getQValue(state, action)
         nextQValue = self.getQValue(nextState, action)
-        print(currentQValue)
-        print(reward)
 
 
     def getPolicy(self, state):
