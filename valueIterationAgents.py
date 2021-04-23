@@ -47,7 +47,7 @@ class ValueIterationAgent(ValueEstimationAgent):
         "*** YOUR CODE HERE ***"
         states = self.mdp.getStates()
 
-        for i in range(iterations):
+        for i in range(0, iterations):
           valuesCopy = self.values.copy()
           for state in states:
             finalValue = None
@@ -75,10 +75,10 @@ class ValueIterationAgent(ValueEstimationAgent):
         """
         "*** YOUR CODE HERE ***"
         value = 0
-        transition = self.mdp.getTransitionStatesAndProbs(state, action)
+        transition = self.mdp.getTransitionStatesAndProbs(state,action)
         for nextState, probability in transition:
-            value += probability * (self.mdp.getReward(state, action, nextState)) + (self.discount * self.values[nextState])
-
+            value += probability * (self.mdp.getReward(state, action, nextState) + (self.discount * self.values[nextState]))
+        
         return value
 
     def computeActionFromValues(self, state):
@@ -91,19 +91,19 @@ class ValueIterationAgent(ValueEstimationAgent):
           terminal state, you should return None.
         """
         "*** YOUR CODE HERE ***"
-        actions = self.mdp.getPossibleActions(state)
-
-        if len(actions) == 0:
+        possibleActions = self.mdp.getPossibleActions(state)
+     
+        if len(possibleActions) == 0:
             return None
-        
-        value = None 
+
+        value = None
         result = None
-        for action in actions:
+        for action in possibleActions:
             temp = self.computeQValueFromValues(state, action)
             if value == None or temp > value:
                 value = temp
                 result = action
-        
+
         return result
 
 
